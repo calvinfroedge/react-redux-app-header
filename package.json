@@ -1,6 +1,6 @@
 {
   "name": "react-redux-app-header",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A boilerplate app header for your projects, with navigation and login / logout",
   "main": "lib/index.js",
   "jsnext:main": "es/index.js",
@@ -37,7 +37,7 @@
     "html-webpack-plugin": "^2.16.0",
     "react-bootstrap": "^0.29.3",
     "react-redux": "^4.4.5",
-    "react-redux-auth0": "0.0.3",
+    "react-redux-auth0": "0.0.5",
     "react-router": "^2.4.0",
     "react-router-redux": "^4.0.4",
     "webpack-hot-middleware": "^2.10.0"
