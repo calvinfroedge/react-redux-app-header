@@ -13,7 +13,8 @@ import { syncHistoryWithStore, routerReducer, routerMiddleware } from 'react-rou
 import { applyMiddleware, compose, createStore, combineReducers } from 'redux'
 
 //Reducers
-import { AuthReducer, AuthMiddleware } from 'react-redux-auth0'
+import { AuthReducer, AuthMiddlewares } from 'react-redux-auth0'
+import * as test from 'react-redux-auth0'
 
 //Set up Redux Middleware
 const reducer = combineReducers({
@@ -30,7 +31,7 @@ const DevTools = createDevTools(
 )
 
 //Create the store
-let middlewareToApply = applyMiddleware(AuthMiddleware, routerMiddleware(browserHistory))
+let middlewareToApply = applyMiddleware(AuthMiddlewares.TokenMiddleware(), routerMiddleware(browserHistory))
 const finalCreateStore = compose(
   middlewareToApply,
   DevTools.instrument()
