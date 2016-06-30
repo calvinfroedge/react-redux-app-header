@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppHeader } from './index';
 import { Router, Route } from 'react-router'
+import { Nav, Navbar, NavItem, MenuItem, NavDropdown } from 'react-bootstrap'
+import FontAwesome from 'react-fontawesome'
 
 //Redux
 import {DevTools, store, history} from './redux-setup.js';
@@ -17,7 +19,7 @@ class Test extends React.Component {
       {path: '/bar', navItemComponent: <NavItemComponent icon='http://placekitten.com/50/50' /> }
     ]
     return <div>
-      <AppHeader routes={routes}/>
+      <AppHeader routes={routes} addtlComponent={<HeaderNav />} />
       {this.props.children}
     </div>
   }
@@ -39,6 +41,17 @@ class Foo extends React.Component {
 class Bar extends React.Component {
   render(){
     return <div>Bar route</div>
+  }
+}
+
+class HeaderNav extends React.Component {
+  render(){
+    return (
+      <Nav pullRight>
+        <NavItem href="#"><FontAwesome name="question-circle" size="2x" /></NavItem>
+        <NavItem href="#"><FontAwesome name="cog" size="2x" /></NavItem>
+      </Nav>
+    )
   }
 }
 

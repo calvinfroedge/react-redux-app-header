@@ -30,7 +30,7 @@ export default class AppHeader extends React.Component {
 
   render() {
     let { props } = this;
-    let { routing, auth, dispatch, routes } = props;
+    let { routing, auth, dispatch, routes, addtlComponent } = props;
 
     const authenticated = auth.token;
 
@@ -55,7 +55,7 @@ export default class AppHeader extends React.Component {
 
           {this.props.children}
         </Navbar.Header>
-
+        { addtlComponent }
         {
           authenticated &&
           <Navbar.Collapse>
