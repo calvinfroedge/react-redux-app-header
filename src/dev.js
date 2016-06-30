@@ -12,16 +12,33 @@ import { createAction as act } from 'redux-actions'
 
 class Test extends React.Component {
   render(){
+    let routes = [
+      {path: '/foo', text: 'Foo'},
+      {path: '/bar', navItemComponent: <NavItemComponent icon='http://placekitten.com/50/50' /> }
+    ]
     return <div>
-      <AppHeader routes={[{path: '/foo', text: 'Foo'}]}/>
+      <AppHeader routes={routes}/>
       {this.props.children}
     </div>
+  }
+}
+
+class NavItemComponent extends React.Component {
+  render (){
+    let { icon } = this.props;
+    return <img src={icon} />
   }
 }
 
 class Foo extends React.Component {
   render(){
     return <div>Foo route</div>
+  }
+}
+
+class Bar extends React.Component {
+  render(){
+    return <div>Bar route</div>
   }
 }
 
@@ -32,6 +49,7 @@ ReactDOM.render(
       <Router history={history}>
         <Route path="/" component={Test} onEnter={()=>{ store.dispatch(act(auth.check)()) }}>
           <Route path="/foo" component={Foo} />
+          <Route path="/bar" component={Bar} />
         </Route>
       </Router>
       <DevTools />
