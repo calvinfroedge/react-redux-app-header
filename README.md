@@ -12,4 +12,5 @@ AUTH0_CLIENTID=client-id AUTH0_DOMAIN=client-domain npm run development
 
 - You can pass `appTitle` to customize the app name that shows.
 - `brandLink` updates the link for `appTitle`
-- `routes` is a list of routes that will be used to build the nav, formatted such as `[{path: '/foo', text: 'Foo'}]`
+- 'addtlComponent' allows you to pass an additional component for any other header needs
+- `routes` is a list of routes that will be used to build the nav, formatted such as `[{path: '/foo', text: 'Foo', navItemComponent: <CustomNavItemComponent icon='http://placekitten.com/50/50' /> }]`

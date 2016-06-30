@@ -8,7 +8,7 @@ const { Logout, LoginSignup } = AuthComponents;
 
 class NavItem extends React.Component {
   render(){
-    let {to, icon, key, text, routing, dispatch} = this.props;
+    let {to, navItemComponent, key, text, routing, dispatch} = this.props;
     let path = routing.location ? routing.location.pathname : routing.locationBeforeTransitions.pathname;
     let pathMatch = function(match){
       return (path == `/${match}`) || (path.indexOf(match) == 1);
@@ -17,7 +17,7 @@ class NavItem extends React.Component {
 
     return (
       <li className={pathMatch(to) ? active : ''} role="presentation" key={key}>
-        <Link href="#" to={to}>{text}</Link>
+        <Link href="#" to={to}>{navItemComponent}{text}</Link>
       </li>
     );
   }
@@ -30,14 +30,14 @@ export default class AppHeader extends React.Component {
 
   render() {
     let { props } = this;
-    let { routing, auth, dispatch, routes } = props;
+    let { routing, auth, dispatch, routes, addtlComponent } = props;
 
     const authenticated = auth.token;
 
     const notAuth = <div className="auth-login-signup">
       <LoginSignup login /> or <LoginSignup signup />
     </div>
-    
+
     return (
       <Navbar>
         <Navbar.Header>
@@ -46,7 +46,7 @@ export default class AppHeader extends React.Component {
               { props.appTitle }
             </Link>
           </Navbar.Brand>
-          
+
           {authenticated && <Navbar.Toggle />}
 
           {authenticated && <Logout />}
@@ -55,14 +55,14 @@ export default class AppHeader extends React.Component {
 
           {this.props.children}
         </Navbar.Header>
-
+        { addtlComponent }
         {
-          authenticated && 
+          authenticated &&
           <Navbar.Collapse>
             <Navigation id="nav-primary">
               {Object.keys(routes).map((key)=>{
                 let route = routes[key];
-                let args = {routing, dispatch, to: route.path, text: route.text, key};
+                let args = {routing, dispatch, to: route.path, text: route.text, key, navItemComponent: route.navItemComponent};
                 return <NavItem {...args} />
               })}
             </Navigation>
