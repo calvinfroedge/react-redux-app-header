@@ -30,12 +30,12 @@ export default class AppHeader extends React.Component {
 
   render() {
     let { props } = this;
-    let { routing, auth, dispatch, routes, addtlComponent } = props;
+    let { routing, auth, dispatch, routes, addtlComponent, signup } = props;
 
     const authenticated = auth.token;
 
     const notAuth = <div className="auth-login-signup">
-      <LoginSignup login /> or <LoginSignup signup />
+      <LoginSignup login /> {props.signup && or <LoginSignup signup />}
     </div>
 
     return (
@@ -76,7 +76,8 @@ export default class AppHeader extends React.Component {
 AppHeader.defaultProps = {
   brandLink: '/',
   appTitle: 'app',
-  routes: {}
+  routes: {},
+  signup: true
 }
 
 export default connect((state)=>{
