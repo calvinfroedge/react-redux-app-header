@@ -1,6 +1,6 @@
 {
   "name": "react-redux-app-header",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A boilerplate app header for your projects, with navigation and login / logout",
   "main": "lib/index.js",
   "jsnext:main": "es/index.js",
