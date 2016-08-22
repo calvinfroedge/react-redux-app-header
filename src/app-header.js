@@ -35,7 +35,7 @@ export default class AppHeader extends React.Component {
     const authenticated = auth.token;
 
     const notAuth = <div className="auth-login-signup">
-      <LoginSignup login /> {props.signup && or <LoginSignup signup />}
+      <LoginSignup login /> {props.signup && <div>or <LoginSignup signup /></div>}
     </div>
 
     return (
