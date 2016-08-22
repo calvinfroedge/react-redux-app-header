@@ -30,7 +30,7 @@ export default class AppHeader extends React.Component {
 
   render() {
     let { props } = this;
-    let { routing, auth, dispatch, routes, addtlComponent, signup } = props;
+    let { routing, auth, dispatch, routes, addtlComponent, signup, alternateSignup } = props;
 
     const authenticated = auth.token;
 
